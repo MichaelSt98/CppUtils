@@ -1,12 +1,7 @@
-//
-// Created by Michael Staneker on 09.12.20.
-//
+#ifndef TIMER_H
+#define TIMER_H
 
-#include <chrono> // for std::chrono functions
-
-#ifndef CPP_TEMPLATE_PROJECT_TIMER_H
-#define CPP_TEMPLATE_PROJECT_TIMER_H
-
+#include <chrono>
 
 class Timer {
 private:
@@ -25,4 +20,4 @@ public:
 };
 
 
-#endif //CPP_TEMPLATE_PROJECT_TIMER_H
+#endif //TIMER_H

@@ -1,8 +1,4 @@
-//
-// Created by Michael Staneker on 18.12.20.
-//
-
-#include "../include/Logger.h"
+#include "Logger.h"
 
 Logger::Logger(typelog type) {
     msglevel = type;

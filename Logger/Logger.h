@@ -1,9 +1,5 @@
-//
-// Created by Michael Staneker on 18.12.20.
-//
-
-#ifndef NBODY_LOGGER_H
-#define NBODY_LOGGER_H
+#ifndef LOGGER_H
+#define LOGGER_H
 
 #include <iostream>
 #include "Utils.h"
@@ -43,4 +39,4 @@ private:
     inline Color::Modifier getColor(typelog type);
 };
 
-#endif //NBODY_LOGGER_H
+#endif //LOGGER_H
