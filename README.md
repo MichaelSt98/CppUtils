@@ -75,7 +75,7 @@ for (int i = 0; i < 1500; i++) {
 	//change color to green
 	std::cout << green;
 	//calculate progress
-	float progress i/1500.0;
+	float progress = i/1500.0;
 	// visualize progress using the progress bar
 	progressBar.show_progress(progress);
 	// change color back to default
