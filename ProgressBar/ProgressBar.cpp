@@ -1,4 +1,5 @@
 #include "ProgressBar.h"
+#include "Color.h"
 
 ProgressBar::ProgressBar(int bar_width) : bar_width { bar_width } {}
 

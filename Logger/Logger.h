@@ -2,7 +2,8 @@
 #define LOGGER_H
 
 #include <iostream>
-#include "Utils.h"
+
+#include "Color.h"
 
 enum typelog {
     DEBUG,

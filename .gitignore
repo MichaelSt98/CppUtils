@@ -1,8 +1,12 @@
-**/images/
+# Ignoring temporary files
+*~
 
-**/build/
-**/bin/
+# Ignore IntelliJ project
+.idea/
 
-**/.idea/
+# Ignore generated object and dependency files
+*.d
+*.o
 
-*.mp4
+# Ignore bin/ directory
+bin/
