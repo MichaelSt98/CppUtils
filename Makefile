@@ -3,7 +3,7 @@ CXX := g++
 
 # example program utilizing all modules
 TRGTDIR := bin
-TARGET := runner
+TARGET := cpp-utils
 
 SRCEXT := cpp
 OBJEXT := o
@@ -26,6 +26,10 @@ MAIN := main
 
 all: $(OBJECTS) $(TRGTDIR)/$(TARGET)
 
+# build all with debug flags
+debug: CXXFLAGS += -g
+debug: all
+
 clean: | $(TRGTDIR)
 	@rm -r $(TRGTDIR)/$(TRGT) $(OBJECTS)
 
@@ -36,11 +40,11 @@ $(TRGTDIR):
 	@mkdir -p $@
 
 # generating dependency files for all sources
-# sed changes '%.o: ...' to '%.o %.d: ...' in dependency file, escaping backslashes
+# sed changes '%.o: ...' to '%.o %.d: ...' in dependency file
 %.$(DEPEXT): %.$(SRCEXT)
-	@echo "Generating dependency file for $@ ..."
+	@echo "Generating dependency file '$@' ..."
 	@$(CXX) -MM $(CXXFLAGS) $< -MF $@
-	sed -i "~" -e 's,$(*F).$(OBJEXT),$*.$(OBJEXT) $@,g' $@
+	@sed -i "~" -e 's,$(*F).$(OBJEXT),$*.$(OBJEXT) $@,' $@
 	@rm -f $@~
 	@echo "... done."
 
@@ -51,13 +55,13 @@ include $(MAIN).$(DEPEXT)
 # build main target
 # check if target directory 'bin' already exist via prerequisite
 $(TRGTDIR)/$(TARGET): $(MAIN).$(DEPEXT) | $(TRGTDIR)
-	@echo "Building example programm 'bin/runner'..."
+	@echo "Compiling '$(MAIN).$(SRCEXT)' and linking example program '$@'..."
 	@$(CXX) $(CXXFLAGS) $(OBJECTS) $(MAIN).$(SRCEXT) -o $(TRGTDIR)/$(TARGET)
 	@echo "... done."
 
 # pattern rule to build object from source file
 %.$(OBJEXT): %.$(DEPEXT)
-	@echo "Compiling $@ ..."
+	@echo "Compiling '$@' ..."
 	@$(CXX) -c $(CXXFLAGS) $(@:.$(OBJEXT)=.$(SRCEXT)) -o $@
 	@echo "... done."
 

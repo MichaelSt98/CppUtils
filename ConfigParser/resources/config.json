@@ -1,0 +1,28 @@
+{
+  "program": "cpp-utils",
+  "description": "Running some utility code snippets in C++",
+  "modes": {
+    "timer": {
+      "opt": "T",
+      "description": "Timing is key"
+    },
+    "progress-bar": {
+      "opt": "P",
+      "description": "Make some progress"
+    },
+    "config-parser": {
+      "opt": "C",
+      "description": "Parse the config file real hard"
+    }
+  },
+  "info": {
+    "version": 0,
+    "contributors": ["MichaelSt98", "jammartin"]
+  },
+  "utils": [
+    {"module":  "ConfigParser", "description":  "Configuration file parser built on 'boost::property_tree::ptree'."},
+    {"module":  "Logger", "description": "Simple logger module with levels and colored tags."},
+    {"module":  "ProgressBar", "description": "Utility for displaying a progress bar."},
+    {"module":  "Timer", "description": "Timer module to analyze the speed of your code."}
+  ]
+}
