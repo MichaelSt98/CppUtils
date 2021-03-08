@@ -24,6 +24,14 @@ CXXFLAGS := -std=c++17 -I$(INCLDIR)
 # main source file
 MAIN := main
 
+# get kernel name to be able to run sed correctly on Darwin (MacOS) or Linux kernels
+KERNEL := $(shell uname -s)
+ifeq ($(KERNEL), Darwin) 
+	SED := sed -i "~"
+else
+	SED := sed -i
+endif
+
 all: $(OBJECTS) $(TRGTDIR)/$(TARGET)
 
 # build all with debug flags
@@ -44,7 +52,7 @@ $(TRGTDIR):
 %.$(DEPEXT): %.$(SRCEXT)
 	@echo "Generating dependency file '$@' ..."
 	@$(CXX) -MM $(CXXFLAGS) $< -MF $@
-	@sed -i "~" -e 's,$(*F).$(OBJEXT),$*.$(OBJEXT) $@,' $@
+	@$(SED) 's,$(*F).$(OBJEXT),$*.$(OBJEXT) $@,' $@
 	@rm -f $@~
 	@echo "... done."
 
@@ -65,5 +73,5 @@ $(TRGTDIR)/$(TARGET): $(MAIN).$(DEPEXT) | $(TRGTDIR)
 	@$(CXX) -c $(CXXFLAGS) $(@:.$(OBJEXT)=.$(SRCEXT)) -o $@
 	@echo "... done."
 
-.PHONY: all clean cleaner
+.PHONY: all debug clean cleaner
 
