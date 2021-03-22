@@ -4,6 +4,8 @@
 #include <ostream>
 #include <iostream>
 
+#include "Color.h"
+
 class ProgressBar {
 public:
     ProgressBar(int bar_width);

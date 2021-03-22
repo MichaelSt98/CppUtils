@@ -20,7 +20,8 @@ DEPENDS := $(SOURCES:.$(SRCEXT)=.$(DEPEXT))
 
 # setting general flags
 CXXFLAGS := -std=c++17 -I$(INCLDIR)
-
+# setting linker flags
+LDFLAGS := -lboost_filesystem
 # main source file
 MAIN := main
 
@@ -36,6 +37,8 @@ all: $(OBJECTS) $(TRGTDIR)/$(TARGET)
 
 # build all with debug flags
 debug: CXXFLAGS += -g
+# show linker invocation when building debug target
+debug: LDFLAGS += -v
 debug: all
 
 clean: | $(TRGTDIR)
@@ -64,7 +67,7 @@ include $(MAIN).$(DEPEXT)
 # check if target directory 'bin' already exist via prerequisite
 $(TRGTDIR)/$(TARGET): $(MAIN).$(DEPEXT) | $(TRGTDIR)
 	@echo "Compiling '$(MAIN).$(SRCEXT)' and linking example program '$@'..."
-	@$(CXX) $(CXXFLAGS) $(OBJECTS) $(MAIN).$(SRCEXT) -o $(TRGTDIR)/$(TARGET)
+	@$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) $(MAIN).$(SRCEXT) -o $(TRGTDIR)/$(TARGET)
 	@echo "... done."
 
 # pattern rule to build object from source file

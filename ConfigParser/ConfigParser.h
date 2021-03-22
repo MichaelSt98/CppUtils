@@ -4,16 +4,18 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <stdexcept>
+#include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/info_parser.hpp>
+#include <boost/property_tree/ini_parser.hpp>
+#include <boost/property_tree/xml_parser.hpp>
 #include <boost/foreach.hpp>
 
 class ConfigParser {
 public:
-    static constexpr std::string_view DEFAULT_CONFIG_FILE { "config.json" };
-
-    ConfigParser();
-    ConfigParser(const std::string &file);
+    ConfigParser(const std::string &file="config.json");
 
     std::list<ConfigParser> getObjList(const std::string &key);
     ConfigParser getObj(const std::string &key);

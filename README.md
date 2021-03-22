@@ -3,7 +3,7 @@
 **Utilities (e.g. Parser, Logger, ...) for C++**
 
 ## Prerequisites
-> You need to install the [boost](https://www.boost.org/doc/libs/1_75_0/more/getting_started/unix-variants.html) library on your system. 
+> You need to install the [boost](https://www.boost.org/doc/libs/1_75_0/more/getting_started/unix-variants.html) library on your system.
 
 ## Simple example program
 Build with `make` and run `bin/cpp-utils` to get help on usage:
@@ -25,7 +25,7 @@ The [code](main.cpp) serves as reference for the usage of all the utils in this 
 
 Configuration file parser built on `boost::property_tree::ptree`. 
 
-> Only `.json` file format supported at the moment.
+> Supports `.json`, `.info`, `.ini` and `.xml`.
 
 #### Usage
 
@@ -130,6 +130,10 @@ for (int i = 0; i < 1500; i++) {
 	std::cout << default;
 }
 ```
+
+## Used libraries
+* **cxxopts:** For parsing command line options in GNU style [cxxopts](https://github.com/jarro2783/cxxopts)
+  is utilized.
 
 
 

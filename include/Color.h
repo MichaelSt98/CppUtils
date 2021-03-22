@@ -36,6 +36,13 @@ namespace Color {
         Modifier(Code pCode);
         friend std::ostream& operator<<(std::ostream& os, const Color::Modifier& mod);
     };
+
+    // Implementations
+    inline Modifier::Modifier(Code pCode) : code(pCode) {}
+
+    inline std::ostream& operator<<(std::ostream& os, const Color::Modifier& mod) {
+        return os << "\033[" << mod.code << "m";
+    }
 }
 
 #endif //CPPUTILS_COLOR_H
